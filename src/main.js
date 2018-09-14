@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import List from './List.vue'
+import Details from './Details.vue'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 
@@ -14,7 +15,7 @@ const router = new VueRouter({
   base: __dirname,
   routes: [
     { path: '/list', component: List },
-    { path: '/foo', component: App }
+    { path: '/list/:name', name: 'details', component: Details }
   ]
 })
 
