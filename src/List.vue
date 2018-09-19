@@ -1,5 +1,5 @@
 <template>
-  <div id="list" v-on:product="newProduct">
+  <div id="list">
     <div class="fd-ui fd-ui--fundamental">
         <div class="fd-ui__app">
             <div class="fd-app">
@@ -41,21 +41,9 @@
                                     </td>
                                     <td>{{item.description}}</td>
                                     <td>
-                                        <div class="fd-popover">
-                                            <div class="fd-popover__control">
-                                                <button class="fd-button--secondary sap-icon--vertical-grip" aria-controls="pQqQR213" aria-haspopup="true" aria-expanded="false" aria-label="More"></button>
-                                            </div>
-                                            <div class="fd-popover__body" aria-hidden="true" id="pQqQR213">
-                                                <nav class="fd-menu">
-                                                    <ul class="fd-menu__list">
-                                                        <li><a href="#" class="fd-menu__item">Edit</a></li>
-                                                        <li><a href="#" class="fd-menu__item">Lock</a></li>
-                                                        <li><a href="#" class="fd-menu__item">Duplicate</a></li>
-                                                        <li><a href="#" class="fd-menu__item">Delete</a></li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>
+                                        <span class="fd-list-group__action">
+                                            <button v-on:click="goToSAPProductManager(item)" class="fd-button--secondary sap-icon--edit" aria-label="Edit"></button>
+                                        </span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -110,16 +98,20 @@ export default {
   },
   methods: {
     goBack: ()=>{
-        LuigiClient.linkManager().navigate('/home')
+        // if(LuigiClient.linkManager().hasBack()) {
+            LuigiClient.linkManager().goBack()
+        // } else {
+        //     LuigiClient.linkManager().navigate('/home')
+        // }
     },
     showModal () {
         this.$refs.myModalRef.show()
     },
     gotToDetails: (name) => {
-        LuigiClient.linkManager().withParams({name: name}).navigate(`/home/external/vue/details`);
+        LuigiClient.linkManager().withParams({name: name}).navigate(`/home/vue/details`);
     },
-    newProduct: ()=>{
-        alert("new product")
+    goToSAPProductManager : (product) => {
+        LuigiClient.linkManager().withParams({name: product.name, description: product.description, imgurl: product.imgurl}).navigate(`/home/sapui5`, null, true);
     }
   }
 }

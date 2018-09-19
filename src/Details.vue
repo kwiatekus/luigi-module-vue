@@ -41,13 +41,20 @@ export default {
     }
   },
   created: function () {
-    LuigiClient.addInitListener(()=>{
-        
+    LuigiClient.addInitListener((data)=>{
+        this.nodeParams =
+        Object.keys(LuigiClient.getNodeParams()).length > 0
+          ? LuigiClient.getNodeParams()
+          : null;
+          // eslint-disable-next-line
+         console.log(this.nodeParams); 
+         // eslint-disable-next-line
+         console.log(data); 
     });
   },
   methods: {
     goBackToList: ()=>{
-        LuigiClient.linkManager().navigate('/home/external/vue')
+        LuigiClient.linkManager().navigate('/home/vue')
     }
   }
 }
