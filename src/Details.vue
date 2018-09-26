@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     goBackToList: ()=>{
-        LuigiClient.linkManager().navigate('/home/vue')
+        LuigiClient.linkManager().goBack()
     }
   }
 }
