@@ -15,7 +15,7 @@ const router = new VueRouter({
   base: __dirname,
   routes: [
     { path: '/list', component: List },
-    { path: '/list/:name', name: 'details', component: Details }
+    { path: '/list/:id', name: 'details', component: Details }
   ]
 })
 

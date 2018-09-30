@@ -11,7 +11,7 @@
                             </div>
                             <div class="fd-action-bar__header">
                                 <h1 class="fd-action-bar__title">
-                                    {{ $route.params.name }}
+                                    {{ tractor.name }}
                                 </h1>
                             </div>
                             <div class="fd-action-bar__actions">
@@ -19,6 +19,8 @@
                             </div>
                         </div>
                     </section>
+
+                    <img :src="tractor.imgUrl">
                 </main>
             </div>
         </div>
@@ -27,8 +29,10 @@
 </template>
 
 <script>
+/* eslint-disable */
 import LuigiClient from '@kyma-project/luigi-client';
 
+const tractorSrvUrl = 'https://tractor-srv.us-east.internal.yaas.io/api/tractors';
 
 export default {
   name: 'Details',
@@ -37,24 +41,36 @@ export default {
   },
   data() {
     return {
-      
+      tractor : {}
     }
   },
   created: function () {
-    LuigiClient.addInitListener((data)=>{
-        this.nodeParams =
-        Object.keys(LuigiClient.getNodeParams()).length > 0
-          ? LuigiClient.getNodeParams()
-          : null;
-          // eslint-disable-next-line
-         console.log(this.nodeParams); 
-         // eslint-disable-next-line
-         console.log(data); 
+    // LuigiClient.addInitListener((data)=>{
+    //     this.nodeParams =
+    //     Object.keys(LuigiClient.getNodeParams()).length > 0
+    //       ? LuigiClient.getNodeParams()
+    //       : null;
+    //       // eslint-disable-next-line
+    //      console.log(this.nodeParams); 
+    //      // eslint-disable-next-line
+    //      console.log(data); 
+    // });
+    // LuigiClient.addInitListener((data)=>{
+   
+    // });
+    this.$http.get(`${tractorSrvUrl}/${this.$route.params.id}`).then(response => {
+        this.$data.tractor = response.body;
     });
   },
   methods: {
     goBackToList: ()=>{
-        LuigiClient.linkManager().goBack()
+        if(LuigiClient.linkManager().hasBack())
+        {
+            LuigiClient.linkManager().goBack()
+        } else {
+            LuigiClient.linkManager().navigate("/home/vue")
+        }
+        
     }
   }
 }
