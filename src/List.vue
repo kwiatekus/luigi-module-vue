@@ -10,7 +10,7 @@
         </div>
         <div class="fd-action-bar__header">
           <h1 class="fd-action-bar__title">
-              Tractors
+              Tractor OverVue <img src="./assets/logo.png" style="width:25px">
           </h1>
         </div>
         
@@ -87,7 +87,7 @@
                                 <td>{{tractor.description}}</td>
                                 <td>
                                     <span class="fd-list-group__action">
-                                        <button v-on:click="goToSAPProductManager(tractor)" class="fd-button--secondary sap-icon--edit" aria-label="Edit"></button>
+                                        <button v-on:click="goToSAPProductManager(tractor.id)" class="fd-button--secondary sap-icon--edit" aria-label="Edit"></button>
                                     </span>
                                 </td>
                             </tr>
@@ -149,8 +149,8 @@ export default {
     gotToDetails: (id) => {
         LuigiClient.linkManager().navigate(`/home/vue/${id}`, null, true);
     },
-    goToSAPProductManager : (product) => {
-        LuigiClient.linkManager().withParams({name: product.name, description: product.description, imgurl: product.imgurl}).navigate(`/home/sapui5`, null, true);
+    goToSAPProductManager : (id) => {
+        LuigiClient.linkManager().withParams({id}).navigate(`/home/sapui5`, null, true);
     }
   }
 }

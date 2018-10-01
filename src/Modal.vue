@@ -4,7 +4,7 @@
       <div class="fd-modal__content" role="document">
         <header class="fd-modal__header">
           <slot name="header">
-            <h1 class="fd-modal__title">New Product</h1>
+            <h1 class="fd-modal__title">New Tractor</h1>
             <button @click="hide" class=" fd-button--secondary fd-modal__close"></button>
           </slot>
         </header>
