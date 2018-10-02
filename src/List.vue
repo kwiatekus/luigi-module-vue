@@ -114,7 +114,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import LuigiClient from '@kyma-project/luigi-client';
 import Modal from './Modal';
-const tractorSrvUrl = 'https://tractor-srv.us-east.internal.yaas.io/api/tractors';
+const tractorSrvUrl = 'https://tractor-srv.us-east.stage.cf.yaas.io/api/tractors';
 
 export default {
   name: 'list',

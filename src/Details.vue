@@ -32,7 +32,7 @@
 /* eslint-disable */
 import LuigiClient from '@kyma-project/luigi-client';
 
-const tractorSrvUrl = 'https://tractor-srv.us-east.internal.yaas.io/api/tractors';
+const tractorSrvUrl = 'https://tractor-srv.us-east.stage.cf.yaas.io/api/tractors';
 
 export default {
   name: 'Details',
