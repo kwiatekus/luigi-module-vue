@@ -83,7 +83,8 @@
                         </thead>
                         <tbody>
                             <tr v-for="tractor in tractors" v-bind:key="tractor.name">
-                                <td><a class="fd-has-font-weight-semi" v-on:click="gotToDetails(tractor.id)">{{tractor.name}}</a></td>
+                                <td><a class="fd-has-font-weight-semi" v-on:click="gotToDetails(tractor.id)">{{tractor.name}}</a>
+                                </td>
                                 <td>{{tractor.description}}</td>
                                 <td>
                                     <span class="fd-list-group__action">
