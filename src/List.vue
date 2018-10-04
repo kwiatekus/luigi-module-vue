@@ -148,7 +148,7 @@ export default {
         this.$refs.myModalRef.show()
     },
     gotToDetails: (id) => {
-        LuigiClient.linkManager().navigate(`/home/vue/${id}`, null, true);
+        LuigiClient.linkManager().navigate(`${id}`, null, true);
     },
     goToSAPProductManager : (id) => {
         LuigiClient.linkManager().withParams({id}).navigate(`/home/sapui5`, null, true);

@@ -1,6 +1,6 @@
 <template>
   <div id="details" >
-    <div class="fd-ui fd-ui--fundamental">
+    <!-- <div class="fd-ui fd-ui--fundamental">
         <div class="fd-ui__app">
             <div class="fd-app">
                 <main class="fd-app__main">
@@ -24,8 +24,38 @@
                 </main>
             </div>
         </div>
+    </div> -->
+    <div class="fd-ui fd-ui--fundamental">
+    <div class="fd-page">
+	<header class="fd-page__header">
+    <div class="fd-action-bar">
+        <div class="fd-action-bar__back">
+            <button class=" fd-button--secondary fd-button--compact sap-icon--nav-back" v-on:click="goBackToList"></button>
+        </div>
+        <div class="fd-action-bar__header">
+          <h1 class="fd-action-bar__title">
+              {{ tractor.name }}
+          </h1>
+          <p class="fd-action-bar__description">{{ tractor.description }}</p>
+        </div>
+
     </div>
-  </div>
+</header>
+
+	<div class="fd-page__content">
+    <section class="fd-section">
+        <p class="fd-has-text-align-center">
+            <img :src="tractor.imgUrl">
+        </p>
+    </section>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
 </template>
 
 <script>
