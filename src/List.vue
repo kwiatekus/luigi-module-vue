@@ -129,9 +129,6 @@ export default {
     }
   },
   created: function () {
-    // LuigiClient.addInitListener((data)=>{
-   
-    // });
     this.$http.get(tractorSrvUrl).then(response => {
         this.$data.tractors = response.body;
     });
@@ -148,7 +145,7 @@ export default {
         this.$refs.myModalRef.show()
     },
     gotToDetails: (id) => {
-        LuigiClient.linkManager().navigate(`${id}`, null, true);
+        LuigiClient.linkManager().navigate(`${id}`);
     },
     goToSAPProductManager : (id) => {
         LuigiClient.linkManager().withParams({id}).navigate(`/home/sapui5`, null, true);
