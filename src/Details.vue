@@ -69,36 +69,30 @@ export default {
   components: {
     
   },
-  data() {
-    return {
-      tractor : {}
-    }
+  data : () => {
+      return {
+      tractor : {},
+      projectId : 'pr2'
+      }
   },
   created: function () {
-    // LuigiClient.addInitListener((data)=>{
-    //     this.nodeParams =
-    //     Object.keys(LuigiClient.getNodeParams()).length > 0
-    //       ? LuigiClient.getNodeParams()
-    //       : null;
-    //       // eslint-disable-next-line
-    //      console.log(this.nodeParams); 
-    //      // eslint-disable-next-line
-    //      console.log(data); 
-    // });
-    // LuigiClient.addInitListener((data)=>{
-   
-    // });
+    LuigiClient.addInitListener((data)=>{
+        this.$data.projectId = data.projectId;
+        window.projectId = data.projectId;
+    });
     this.$http.get(`${tractorSrvUrl}/${this.$route.params.id}`).then(response => {
         this.$data.tractor = response.body;
     });
   },
   methods: {
+    
     goBackToList: ()=>{
         if(LuigiClient.linkManager().hasBack())
         {
             LuigiClient.linkManager().goBack()
         } else {
-            LuigiClient.linkManager().navigate("/home/vue")
+            // LuigiClient.linkManager().navigate("/home/vue")
+            LuigiClient.linkManager().navigate("/projects/"+window.projectId+"/tractors");
         }
         
     }
