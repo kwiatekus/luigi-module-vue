@@ -92,7 +92,7 @@ export default {
             LuigiClient.linkManager().goBack()
         } else {
             // LuigiClient.linkManager().navigate("/home/vue")
-            LuigiClient.linkManager().navigate("/projects/"+window.projectId+"/tractors");
+            LuigiClient.linkManager().fromClosestContext().navigate("");
         }
         
     }
